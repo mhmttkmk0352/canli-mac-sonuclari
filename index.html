@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/flipclock.css">
+    <link rel="stylesheet" type="text/css" href="css/ana.css">
+
+
+
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+
+    <script src="js/socket.io.js"></script>
+    <script src="js/app-socket.js"></script>
+
+
+
+    <title>realtimescores.net</title>
+</head>
+<body>
+
+
+
+
+
+<div class="container kayit-ol-sayfasi">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+
+
+
+
+
+
+                <div class="card-body kartlar">
+                    <label class="card-title alert alert-danger col-12">Nasıl Oynanır <i class="fas fa-question"></i></label>
+
+                    <div class="cizgi"></div>
+                    <form class="form-signin mt-3">
+                        <div class="form-label-group">
+                            <p><i style="color: #0dbdd2" class="fas fa-question-circle"></i> Para yatırmadan bahse gir ve para kazan. Sizce de eğlenceli değil mi ?</p>
+                            <p><i style="color: green" class="far fa-check-square"></i> Her gün birkaç müsabaka belirlenir.</p>
+                            <p><i style="color: green" class="far fa-check-square"></i> Bu müsabakalar için skor tahminleri tarafınızca yapılır.</p>
+                            <p><i style="color: green" class="far fa-check-square"></i> Kasadaki para öncelikle 3 maçın skorunu da doğru bilenler, yoksa 2 doğru, o da yoksa 1 doğru tahmin yapanlar arasında paylaştırılır.</p>
+                            <p><i style="color: #0dbdd2" class="fas fa-grin-stars"></i> Hadi eğlenceye başlayalım.</p>
+                            <div class="cizgi mt-5"></div>
+                            <p class="mt-3"> <b>NOT :</b> Kasadaki para maça başlamadan hemen önce belirlenir.</p>
+
+                        </div>
+                    </form>
+                    <div class="cizgi"></div>
+                </div>
+
+
+
+
+
+                <div class="card-body kartlar">
+                    <label class="card-title col-12 alert alert-success">Kaydol</label>
+                    <div class="form-signin">
+                        <div class="form-label-group">
+                            <label id="kullanici_adi_for" for="kullanici">Kullanıcı adı oluşturun</label>
+                            <input type="text" id="kullanici" name="kullanici" class="form-control" placeholder="Kullanıcı adı oluşturun" required autofocus>
+
+                        </div>
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase kaydol-btn mt-2" type="submit">Kaydol</button>
+
+                    </div>
+                </div>
+
+
+                <!--
+
+                $("#kullanici_adi_for").html('<i style="color:green" class="fas fa-check">Kullanılabir</i>');
+                $("#kullanici_adi_for").html('<i style="color:red" class="fas fa-check">Bu kullanıcı zaten var</i>');
+
+                 -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="container anaContainer uygulamayi-ac">
+    <div class="row alert alert-info">
+
+        <div id="ciko_baslik" class="col-10">realtimescores.net</div>
+        <div class="col-2 text-right"><i style="color: red; padding-right:0px" class="baglantidurum fas fa-exclamation-triangle"></i></div>
+
+    </div>
+
+
+
+
+
+    <div class="row justify-content-center alert alert-light isim-ve-bakiye d-none">
+
+        <div class="col-8 text-left kullanici">-</div>
+        <div class="col-4 text-right bakiye ">-</div>
+
+    </div>
+
+
+
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#ana" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-futbol"></i> Football</a>
+        </li>
+        <li class="nav-item d-none">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#kupon" role="tab" aria-controls="profile" aria-selected="false"><i class="far fa-list-alt"></i> Kupon</a>
+        </li>
+        <li class="nav-item d-none">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#yardim" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-cog"></i></a>
+        </li>
+
+    </ul>
+
+
+
+    <div class="tab-content mt-6" id="myTabContent">
+        <div class="tab-pane fade show active" id="ana" role="tabpanel" aria-labelledby="home-tab">
+
+            <div class="justify-content-center kazanan-listesi d-none">
+
+            </div>
+
+            <div class="mt-4 ana-maclistesi">
+
+
+            </div>
+
+
+        </div>
+
+        <div class="tab-pane fade" id="kupon" role="tabpanel" aria-labelledby="profile-tab">
+
+
+
+            <div class="row justify-content-center text-center">
+
+                <center>
+                    <div class="clock" style="margin:2em;"></div>
+                    <div class="message"></div>
+                </center>
+
+
+
+
+            </div>
+
+            <div class="row justify-content-center text-center kupon-uyari">
+                MAÇ BAŞLAMADAN ÖNCE HEMEN BİR KUPON OLUŞTURUN.
+            </div>
+
+
+
+
+            <div class="row mt-3 justify-content-center text-center">
+                <button class="btn btn-info sanal-kupon-olustur mb-4"> Sanal Kupon Oluştur</button>
+            </div>
+            <!-- #kupon BİTİŞ -->
+        </div>
+        <div class="tab-pane fade" id="ayarlar" role="tabpanel" aria-labelledby="settings-tab">.Ayarlar.</div>
+        <div class="tab-pane fade" id="yardim" role="tabpanel" aria-labelledby="contact-tab">.?.</div>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/flipclock.min.js"></script>
+</body>
+</html>

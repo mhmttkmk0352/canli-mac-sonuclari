@@ -1,0 +1,70 @@
+body{
+	font-family: 'Verdana';
+}
+.anaContainer .nav .nav-tabs{
+	background-color: #ccc !important;
+}
+#kupon img{
+	width: 3.000em;
+	height: 3.000em;
+}
+.skor{
+	font-weight: bold;
+	font-size: 1.500em;
+}
+.isim-ve-bakiye{
+	font-size: 0.900em;
+	text-shadow: 0 0 1px 0dbdd2;
+}
+.cizgi{
+	width: 100%;
+	border: 1px solid #0dbdd2;
+}
+.kayit-ol-sayfasi {
+	display: none;
+}
+.uygulamayi-ac {
+	display: none;
+}
+#ciko_baslik {
+	font-weight: bold; 
+	color: #f73224; 
+	text-shadow: 0 0 1px #000;
+	font-size: 1.250em;
+}
+#kullanici_adi_for {
+    font-size: 0.700em;
+}
+.kartlar .card-title{
+	font-size: 1em;
+}
+.skor-gostergesi {
+	font-weight: bold;
+	font-size: 2em;
+}
+.ciko-mac-listesi {
+	border: 2px solid #eee;
+	border-radius: 20px;
+	box-shadow: #eee 1px 3px
+
+}
+.takim-adi, .son-olay {
+	font-size: 0.750em;
+}
+
+.dakika-goster {
+	font-weight: bold;
+	font-size: 1em;
+	color: green;
+}
+.clock {
+	zoom: 0.5;
+	-moz-transform: scale(0.5);
+	width: 57em;
+}
+.benim-kupon-tahmininiz {
+	font-size: 0.6em;
+}
+.benim-kupon-tahmininiz {
+	background-color: aliceblue;
+}
